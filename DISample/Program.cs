@@ -8,7 +8,11 @@ namespace DISample
         {
             Console.WriteLine("Hello World!");
 
-            var a = new A();
+            //クラスAの外でインスタンスを作って
+            var b = new B();
+
+            //クラスAに渡してやる。
+            var a = new A(b);
         }
     }
 
@@ -16,11 +20,8 @@ namespace DISample
 
     class A
     {
-        public A()
+        public A(B b)
         {
-            //クラスBのインスタンスを使う。
-            var b = new B();
-
             Console.WriteLine(b.CalcAdd(1, 2));
         }
     }
@@ -29,7 +30,6 @@ namespace DISample
     {
         public int CalcAdd(int x, int y)
         {
-
             return (x + y);
         }
     }
