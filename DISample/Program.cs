@@ -8,8 +8,8 @@ namespace DISample
         {
             Console.WriteLine("Hello World!");
 
-            //クラスAの外でインスタンスを作って
-            var b = new B();
+            //仮のクラスBもどきを作って
+            var b = new BModoki();
 
             //クラスAに渡してやる。
             var a = new A(b);
@@ -20,17 +20,31 @@ namespace DISample
 
     class A
     {
-        public A(B b)
+        public A(IBclass b)
         {
             Console.WriteLine(b.CalcAdd(1, 2));
         }
     }
 
-    class B
+    interface IBclass
+    {
+        int CalcAdd(int x, int y);
+    }
+
+    class B : IBclass
     {
         public int CalcAdd(int x, int y)
         {
+            //開発中
             return (x + y);
+        }
+    }
+
+    class BModoki : IBclass
+    {
+        public int CalcAdd(int x, int y)
+        {
+            return 4;
         }
     }
 }
